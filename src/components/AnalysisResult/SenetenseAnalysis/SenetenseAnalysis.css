@@ -1,0 +1,27 @@
+.analysis-result .sentences .sentense-analysis {
+    display: flex;
+    align-items: center;
+    padding: 0px 0px 5px 10px;
+    border-bottom: 1px solid rgb(217, 217, 217);
+}
+
+.analysis-result .sentences .sentense-analysis .text {
+    width: 80%;
+    color:
+        #000;
+}
+
+.analysis-result .sentences .sentense-analysis .tone {
+    text-align: center;
+    width: 15%;
+    margin: 0 auto;
+}
+
+.analysis-result .sentences .sentense-analysis span {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    justify-self: center;
+    margin-left: auto;
+}

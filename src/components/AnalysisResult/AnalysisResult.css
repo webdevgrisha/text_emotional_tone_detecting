@@ -1,0 +1,38 @@
+.analysis-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+    margin-bottom: 50px;
+}
+
+.analysis-result .total-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: transparent;
+    gap: 20px;
+}
+
+.analysis-result .total-result h2 {
+    color: black;
+}
+
+.analysis-result .total-result span {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+.analysis-result .sentences {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    gap: 20px;
+    width: 70%;
+}
