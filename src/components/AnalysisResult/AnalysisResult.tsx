@@ -4,6 +4,7 @@ import {
   getSentimentTone,
   negativeColorInterpolation,
   positiveColorInterpolation,
+  sentimentColor,
 } from "./analysisFuncs";
 import SenetenseAnalysis from "./SenetenseAnalysis/SenetenseAnalysis";
 import MagnitudeVisualisation from "./MagnitudeVisualisation/MagnitudeVisualisation";
@@ -30,6 +31,8 @@ function AnalysisResult({ result }: AnalysisResultProps) {
   const { magnitude, score } = documentSentiment;
 
   const primaryTone = getSentimentTone(score);
+  const primaryColor = sentimentColor[primaryTone];
+
   const primaryToneColor =
     score >= 0
       ? positiveColorInterpolation(score)
@@ -41,8 +44,7 @@ function AnalysisResult({ result }: AnalysisResultProps) {
     <section className="analysis-result">
       <header className="total-result">
         <h2>
-          Primary tone -
-          <i style={{ color: primaryTone.color }}> {primaryTone.tone}</i>
+          Primary tone -<i style={{ color: primaryColor }}> {primaryTone}</i>
         </h2>
         <span
           className="emotional-color"
@@ -54,7 +56,12 @@ function AnalysisResult({ result }: AnalysisResultProps) {
         <span className="gradient"></span>
         <ul className="emotions">
           {emotions.map((emotion, index) => {
-            return <li key={index}>{emotion}</li>;
+            const color = sentimentColor[emotion];
+            return (
+              <li key={index} style={{ color: color }}>
+                {emotion}
+              </li>
+            );
           })}
         </ul>
       </div>

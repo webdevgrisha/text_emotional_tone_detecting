@@ -3,6 +3,7 @@ import {
   getSentimentTone,
   negativeColorInterpolation,
   positiveColorInterpolation,
+  sentimentColor,
 } from "../analysisFuncs";
 
 interface SenetenseAnalysisProps {
@@ -18,6 +19,7 @@ function SenetenseAnalysis({
   score,
 }: SenetenseAnalysisProps) {
   const tone = getSentimentTone(score);
+  const color = sentimentColor[tone];
   const toneColor =
     score >= 0
       ? positiveColorInterpolation(score)
@@ -28,8 +30,8 @@ function SenetenseAnalysis({
       <p className="text">
         {index}: {text}
       </p>
-      <p className="tone" style={{ color: tone.color }}>
-        {tone.tone}
+      <p className="tone" style={{ color: color }}>
+        {tone}
       </p>
       <span
         className="emotional-color"

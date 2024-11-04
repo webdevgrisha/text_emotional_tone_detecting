@@ -1,26 +1,35 @@
-interface SentimentResult {
-    tone: string;
-    color: string;
-};
+interface SentimentColor {
+    [key: string]: string
+}
 
-function getSentimentTone(score: number): SentimentResult {
+const sentimentColor: SentimentColor = {
+    "Strong Negative": "rgb(178, 34, 34)",
+    "Moderate Negative": "rgb(220, 70, 70)",
+    "Slightly Negative": "rgb(245, 150, 120)",
+    "Neutral": "rgb(169, 169, 169)",
+    "Slightly Positive": "rgb(144, 238, 144)",
+    "Moderate Positive": "rgb(60, 179, 113)",
+    "Strong Positive": "rgb(34, 139, 34)",
+}
+
+function getSentimentTone(score: number): string {
     if (score <= -0.75) {
-        return { tone: "Strong Negative", color: "rgb(153, 0, 0)" };
+        return "Strong Negative";
     } else if (score <= -0.5) {
-        return { tone: "Moderate Negative", color: "rgb(180, 0, 50)" };
+        return "Moderate Negative";
     } else if (score < -0.25) {
-        return { tone: "Slightly Negative", color: "rgb(170, 85, 0)" };
+        return "Slightly Negative";
     } else if (score >= -0.25 && score <= 0.25) {
-        return { tone: "Neutral", color: "rgb(128, 128, 128)" };
+        return "Neutral";
     } else if (score > 0.25 && score <= 0.5) {
-        return { tone: "Slightly Positive", color: "rgb(200, 255, 150)" };
+        return "Slightly Positive";
     } else if (score > 0.5 && score <= 0.75) {
-        return { tone: "Moderate Positive", color: "rgb(100, 255, 100)" };
+        return "Moderate Positive";
     } else if (score > 0.75) {
-        return { tone: "Strong Positive", color: "rgb(0, 255, 255)" };
+        return "Strong Positive";
     }
 
-    return { tone: "Undefined Tone", color: "rgb(128, 128, 128)" };
+    return "Undefined Tone";
 }
 
 // formual: a + (b - a) * x
@@ -59,6 +68,7 @@ function positiveColorInterpolation(score: number): string {
 
 
 export {
+    sentimentColor,
     getSentimentTone,
     negativeColorInterpolation,
     positiveColorInterpolation
