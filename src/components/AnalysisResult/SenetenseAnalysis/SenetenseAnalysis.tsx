@@ -5,6 +5,7 @@ import {
   positiveColorInterpolation,
   sentimentColor,
 } from "../analysisFuncs";
+import MagnitudeVisualisation from "../MagnitudeVisualisation/MagnitudeVisualisation";
 
 interface SenetenseAnalysisProps {
   text: string;
@@ -17,6 +18,7 @@ function SenetenseAnalysis({
   text,
   index,
   score,
+  magnitude,
 }: SenetenseAnalysisProps) {
   const tone = getSentimentTone(score);
   const color = sentimentColor[tone];
@@ -27,16 +29,24 @@ function SenetenseAnalysis({
 
   return (
     <div className="sentense-analysis">
+      <span className="emotional-color" style={{ backgroundColor: toneColor }}>
+        {score.toFixed(2)}
+      </span>
       <p className="text">
         {index}: {text}
       </p>
       <p className="tone" style={{ color: color }}>
         {tone}
       </p>
-      <span
-        className="emotional-color"
-        style={{ backgroundColor: toneColor }}
-      ></span>
+      <span className="magnitude-score">
+        {magnitude.toFixed(2)}
+      </span>
+        <MagnitudeVisualisation
+          showTitle={false}
+          magnitude={magnitude}
+          height={40}
+          width={10000}
+        />
     </div>
   );
 }

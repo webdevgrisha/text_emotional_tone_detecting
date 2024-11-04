@@ -21,14 +21,18 @@
 }
 
 .analysis-result .total-result h2 {
-    color: black;
+    color: rgb(41, 41, 41);
 }
 
 .analysis-result .total-result span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 70px;
     height: 40px;
     border-radius: 25px;
     border: 1px solid #000;
+    color: rgb(41, 41, 41);
 }
 
 .emotional-scale {

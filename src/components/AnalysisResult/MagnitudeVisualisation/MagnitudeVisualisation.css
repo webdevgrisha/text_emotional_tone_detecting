@@ -4,23 +4,36 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 20px;
 
     background-color: aliceblue;
     border-radius: 20px;
     overflow: hidden;
-    padding: 10px;
+    padding: 20px 10px 20px 10px;
+    box-sizing: border-box;
+}
+
+.wave-wrapper {
+    width: 100%;
+    overflow: hidden;
 }
 
 @keyframes drawWave {
-    to {
-        stroke-dashoffset: 0;
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(var(--period)));
     }
 }
 
-.magnitude-container svg polyline {
-    stroke-dasharray: var(--path-length);
-    stroke-dashoffset: var(--path-length);
-    animation: drawWave calc(var(--path-length) / 20 * 0.5s) linear infinite;
+.magnitude-container svg {
+    align-self: flex-start;
+    top: 0px;
+    left: 0px;
+    max-width: 10000000px;
+    animation: drawWave calc(var(--wave-speed)) linear infinite;
 }
 
 .magnitude-container h4 {

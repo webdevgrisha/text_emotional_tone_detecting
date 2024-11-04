@@ -49,7 +49,7 @@ function AnalysisResult({ result }: AnalysisResultProps) {
         <span
           className="emotional-color"
           style={{ backgroundColor: primaryToneColor }}
-        ></span>
+        >{score.toFixed(2)}</span>
       </header>
 
       <div className="emotional-scale">
@@ -66,11 +66,11 @@ function AnalysisResult({ result }: AnalysisResultProps) {
         </ul>
       </div>
 
-      <MagnitudeVisualisation magnitude={magnitude} />
+      <MagnitudeVisualisation magnitude={magnitude} width={10000} height={100}/>
 
       <div className="sentences">
         {sentences.map(({ text, sentiment }, index) => {
-          const { score } = sentiment;
+          const { score, magnitude } = sentiment;
 
           return (
             <SenetenseAnalysis
@@ -78,7 +78,7 @@ function AnalysisResult({ result }: AnalysisResultProps) {
               index={index + 1}
               text={text.content}
               score={score}
-              magnitude={0}
+              magnitude={magnitude}
             />
           );
         })}

@@ -5,24 +5,50 @@
     border-bottom: 1px solid rgb(217, 217, 217);
 }
 
-.analysis-result .sentences .sentense-analysis .text {
-    width: 70%;
-    color:
-        #000;
-}
-
-.analysis-result .sentences .sentense-analysis .tone {
-    text-align: center;
-    width: 15%;
-    margin: 0 auto;
-    font-weight: 500;
-}
-
 .analysis-result .sentences .sentense-analysis span {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 70px;
     height: 40px;
     border-radius: 25px;
     border: 1px solid #000;
     justify-self: center;
-    margin-left: 40px;
+    margin-right: 40px;
+    color: rgb(51, 51, 51);
+    font-weight: 500;
+}
+
+.analysis-result .sentences .sentense-analysis .text {
+    width: 50%;
+    color: #000;
+    margin-right: auto;
+}
+
+.analysis-result .sentences .sentense-analysis .tone {
+    width: 15%;
+    text-align: center;
+    margin-left: auto;
+    font-weight: 500;
+}
+
+.analysis-result .sentences .sentense-analysis .magnitude-score {
+    width: 10%;
+    border-radius: 150%;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.analysis-result .sentences .sentense-analysis .magnitude-container {
+    width: 15%;
+}
+
+.analysis-result .sentences .sentense-analysis .wave {
+    display: flex;
+    justify-content: right;
+    min-width: 30%;
+    width: 30%;
+    margin: 0 auto;
 }
