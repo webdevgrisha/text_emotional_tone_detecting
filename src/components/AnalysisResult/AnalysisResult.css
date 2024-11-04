@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 3rem;
     width: 100%;
 
     margin-bottom: 50px;
@@ -15,6 +16,8 @@
     width: 100%;
     background-color: transparent;
     gap: 20px;
+    
+    height: 4rem;
 }
 
 .analysis-result .total-result h2 {
@@ -26,6 +29,35 @@
     height: 40px;
     border-radius: 25px;
     border: 1px solid #000;
+}
+
+.emotional-scale {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 5rem;
+}
+
+.emotional-scale .emotions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    /* color: rgb(33, 109, 209); */
+    color: rgb(128, 128, 128);
+    font-weight: 600;
+    list-style-type: none;
+    padding-left: 0;
+
+    margin-top: 5px;
+}
+
+.emotional-scale span {
+    height: 3rem;
+    width: 100%;
+    border-radius: 15px;
+    background: linear-gradient(to right, rgb(255, 0, 0), rgb(128, 128, 128), rgb(0, 255, 0));
+
 }
 
 .analysis-result .sentences {

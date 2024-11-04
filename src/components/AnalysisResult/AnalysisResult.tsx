@@ -11,6 +11,16 @@ interface AnalysisResultProps {
   result: null | AnalysisData;
 }
 
+const emotions: string[] = [
+  "Strong Negative",
+  "Moderate Negative",
+  "Slightly Negative",
+  "Neutral",
+  "Slightly Positive",
+  "Moderate Positive",
+  "Strong Positive",
+];
+
 function AnalysisResult({ result }: AnalysisResultProps) {
   if (result === null) return null;
 
@@ -38,6 +48,16 @@ function AnalysisResult({ result }: AnalysisResultProps) {
           style={{ backgroundColor: primaryToneColor }}
         ></span>
       </header>
+
+      <div className="emotional-scale">
+        <span className="gradient"></span>
+        <ul className="emotions">
+          {emotions.map((emotion, index) => {
+            return <li key={index}>{emotion}</li>;
+          })}
+        </ul>
+      </div>
+
       <div className="sentences">
         {sentences.map(({ text, sentiment }, index) => {
           const { magnitude, score } = sentiment;
