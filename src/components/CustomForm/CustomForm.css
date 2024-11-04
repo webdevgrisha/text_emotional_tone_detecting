@@ -37,6 +37,24 @@
     resize: none;
 }
 
+.custom-form .default-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.custom-form .default-options .option {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.custom-form .default-options .option input {
+    margin-right: 3px;
+}
+
 .custom-form button {
     display: flex;
     justify-content: center;

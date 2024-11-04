@@ -34,7 +34,7 @@
 .emotional-scale {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 80%;
     height: 5rem;
 }
 

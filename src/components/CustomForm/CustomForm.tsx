@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./CustomForm.css";
 import { analyzeTone } from "../../services/firebase/functions";
 import { AnalysisData } from "../../interfaces";
+import emotionsConfing from "./initTexts";
 
 interface CustomFormProps {
   setLoading: (value: boolean) => void;
@@ -28,6 +29,13 @@ function CustomForm({ setLoading, setAnalysisResult }: CustomFormProps) {
     setText(value);
   };
 
+  const handleInitTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    const text = emotionsConfing[value].text;
+
+    setText(text || "");
+  };
+
   return (
     <form className="custom-form" onSubmit={handleCheak}>
       <textarea
@@ -35,6 +43,21 @@ function CustomForm({ setLoading, setAnalysisResult }: CustomFormProps) {
         value={text}
         onChange={handleTextAreaChange}
       ></textarea>
+      <div className="default-options">
+        {Object.entries(emotionsConfing).map(([emotionName, { color }]) => {
+          return (
+            <div className="option" key={emotionName}>
+              <input
+                type="radio"
+                name="init-text"
+                value={emotionName}
+                onChange={handleInitTextChange}
+              />
+              <label style={{ color: color }}>{emotionName}</label>
+            </div>
+          );
+        })}
+      </div>
       <button>Cheak</button>
     </form>
   );
