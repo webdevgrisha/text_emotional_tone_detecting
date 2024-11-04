@@ -1,5 +1,9 @@
 import "./SenetenseAnalysis.css";
-import { getSentimentTone, sentimentToEmotionColor } from "../analysisFuncs";
+import {
+  getSentimentTone,
+  negativeColorInterpolation,
+  positiveColorInterpolation,
+} from "../analysisFuncs";
 
 interface SenetenseAnalysisProps {
   text: string;
@@ -14,8 +18,11 @@ function SenetenseAnalysis({
   score,
   magnitude,
 }: SenetenseAnalysisProps) {
-  const tone = getSentimentTone(score, magnitude);
-  const toneColor = sentimentToEmotionColor(score, magnitude);
+  const tone = getSentimentTone(score);
+  const toneColor =
+    score >= 0
+      ? positiveColorInterpolation(score)
+      : negativeColorInterpolation(score);
 
   return (
     <div className="sentense-analysis">

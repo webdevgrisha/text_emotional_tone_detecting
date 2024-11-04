@@ -22,9 +22,9 @@
 }
 
 .analysis-result .total-result span {
-    width: 40px;
+    width: 70px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 25px;
     border: 1px solid #000;
 }
 

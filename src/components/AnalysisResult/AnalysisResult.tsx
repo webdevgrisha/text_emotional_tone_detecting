@@ -1,6 +1,10 @@
 import "./AnalysisResult.css";
 import { AnalysisData } from "../../interfaces";
-import { getSentimentTone, sentimentToEmotionColor } from "./analysisFuncs";
+import {
+  getSentimentTone,
+  negativeColorInterpolation,
+  positiveColorInterpolation,
+} from "./analysisFuncs";
 import SenetenseAnalysis from "./SenetenseAnalysis/SenetenseAnalysis";
 
 interface AnalysisResultProps {
@@ -14,8 +18,11 @@ function AnalysisResult({ result }: AnalysisResultProps) {
 
   const { magnitude, score } = documentSentiment;
 
-  const primaryTone = getSentimentTone(score, magnitude);
-  const primaryToneColor = sentimentToEmotionColor(score, magnitude);
+  const primaryTone = getSentimentTone(score);
+  const primaryToneColor =
+    score >= 0
+      ? positiveColorInterpolation(score)
+      : negativeColorInterpolation(score);
 
   console.log("primaryToneColor: ", primaryToneColor);
 

@@ -18,9 +18,9 @@
 }
 
 .analysis-result .sentences .sentense-analysis span {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+    width: 70px;
+    height: 40px;
+    border-radius: 25px;
     border: 1px solid #000;
     justify-self: center;
     margin-left: auto;
