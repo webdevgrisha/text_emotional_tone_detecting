@@ -10,7 +10,7 @@ interface AnalysisResultProps {
 function AnalysisResult({ result }: AnalysisResultProps) {
   if (result === null) return null;
 
-  const { documentSentiment, language, sentences } = result;
+  const { documentSentiment, sentences } = result;
 
   const { magnitude, score } = documentSentiment;
 
