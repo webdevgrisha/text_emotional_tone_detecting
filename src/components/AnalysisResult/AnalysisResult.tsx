@@ -6,6 +6,7 @@ import {
   positiveColorInterpolation,
 } from "./analysisFuncs";
 import SenetenseAnalysis from "./SenetenseAnalysis/SenetenseAnalysis";
+import MagnitudeVisualisation from "./MagnitudeVisualisation/MagnitudeVisualisation";
 
 interface AnalysisResultProps {
   result: null | AnalysisData;
@@ -58,9 +59,11 @@ function AnalysisResult({ result }: AnalysisResultProps) {
         </ul>
       </div>
 
+      <MagnitudeVisualisation magnitude={magnitude} />
+
       <div className="sentences">
         {sentences.map(({ text, sentiment }, index) => {
-          const { magnitude, score } = sentiment;
+          const { score } = sentiment;
 
           return (
             <SenetenseAnalysis
@@ -68,7 +71,7 @@ function AnalysisResult({ result }: AnalysisResultProps) {
               index={index + 1}
               text={text.content}
               score={score}
-              magnitude={magnitude}
+              magnitude={0}
             />
           );
         })}

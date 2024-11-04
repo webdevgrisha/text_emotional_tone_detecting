@@ -10,7 +10,6 @@ interface CustomFormProps {
 
 function CustomForm({ setLoading, setAnalysisResult }: CustomFormProps) {
   const [text, setText] = useState<string>("");
-
   const handleCheak = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

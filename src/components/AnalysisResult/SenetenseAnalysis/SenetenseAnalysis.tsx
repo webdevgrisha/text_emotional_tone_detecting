@@ -16,7 +16,6 @@ function SenetenseAnalysis({
   text,
   index,
   score,
-  magnitude,
 }: SenetenseAnalysisProps) {
   const tone = getSentimentTone(score);
   const toneColor =

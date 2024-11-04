@@ -1,0 +1,28 @@
+.magnitude-container {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: aliceblue;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+@keyframes drawWave {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.magnitude-container svg polyline {
+    stroke-dasharray: var(--path-length);
+    stroke-dashoffset: var(--path-length);
+    animation: drawWave calc(var(--path-length) / 20 * 0.5s) linear infinite;
+}
+
+.magnitude-container h4 {
+    color: rgb(41, 41, 41);
+}

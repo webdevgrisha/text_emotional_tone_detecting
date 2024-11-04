@@ -38,6 +38,13 @@
     height: 5rem;
 }
 
+.emotional-scale span {
+    height: 3rem;
+    width: 100%;
+    border-radius: 15px;
+    background: linear-gradient(to right, rgb(255, 0, 0), rgb(128, 128, 128), rgb(0, 255, 0));
+}
+
 .emotional-scale .emotions {
     display: flex;
     justify-content: space-between;
@@ -50,14 +57,6 @@
     padding-left: 0;
 
     margin-top: 5px;
-}
-
-.emotional-scale span {
-    height: 3rem;
-    width: 100%;
-    border-radius: 15px;
-    background: linear-gradient(to right, rgb(255, 0, 0), rgb(128, 128, 128), rgb(0, 255, 0));
-
 }
 
 .analysis-result .sentences {
