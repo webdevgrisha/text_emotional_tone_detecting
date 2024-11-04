@@ -3,6 +3,8 @@ import "./CustomForm.css";
 import { analyzeTone } from "../../services/firebase/functions";
 import { AnalysisData } from "../../interfaces";
 import emotionsConfing from "./initTexts";
+import { toast } from "react-toastify";
+import { HttpsCallableResult } from "firebase/functions";
 
 interface CustomFormProps {
   setLoading: (value: boolean) => void;
@@ -14,14 +16,34 @@ function CustomForm({ setLoading, setAnalysisResult }: CustomFormProps) {
   const handleCheak = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (text.trim() === "") {
+      toast.error(`We can't analyse an empty string.`);
+      return;
+    }
+
     setLoading(true);
     setAnalysisResult(null);
 
-    const result = await analyzeTone({ text: text });
+    try {
+      const result = (await analyzeTone({
+        text: text,
+      })) as HttpsCallableResult<AnalysisData>;
 
-    setLoading(false);
-    setAnalysisResult(result.data as unknown as AnalysisData);
-    console.log("result: ", result);
+      setLoading(false);
+
+      if ("error" in result.data) {
+        toast.error((result.data as { error: string }).error);
+        return;
+      }
+
+      setAnalysisResult(result.data);
+      console.log("result: ", result);
+    } catch (error) {
+      console.error("Error calling analyzeTone:", error);
+      toast.error("It was not possible to analyse the text.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

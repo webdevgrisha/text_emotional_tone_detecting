@@ -3,6 +3,7 @@ import functions from 'firebase-functions';
 import { LanguageServiceClient } from '@google-cloud/language';
 import { onCall } from 'firebase-functions/v2/https';
 import { CallableRequest } from 'firebase-functions/lib/common/providers/https';
+import { FirebaseError } from 'firebase-admin';
 
 const client = new LanguageServiceClient();
 
@@ -24,7 +25,8 @@ export const analyzeTone = onCall(async (request: CallableRequest<{ text: string
 
         return result;
     } catch (error) {
+        const err = error as FirebaseError;
         console.error('Error analyzing tone:', error);
-        throw new functions.https.HttpsError('internal', 'Text analysis error');
+        return { error: err.message }
     }
 });

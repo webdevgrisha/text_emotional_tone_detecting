@@ -43,6 +43,7 @@ function SenetenseAnalysis({
       </span>
         <MagnitudeVisualisation
           showTitle={false}
+          scale={0.1}
           magnitude={magnitude}
           height={40}
           width={10000}
